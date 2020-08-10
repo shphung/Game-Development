@@ -1,0 +1,361 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://Assets/left_pallete.png" type="Texture" id=1]
+[ext_resource path="res://Assets/ball.png" type="Texture" id=2]
+[ext_resource path="res://Assets/separator.png" type="Texture" id=3]
+[ext_resource path="res://Assets/right_pallete.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/Game/PongVariant/PaddlesVariant.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/Game/PongVariant/BallVariant.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/Game/PongVariant/WallVariant.gd" type="Script" id=7]
+[ext_resource path="res://Assets/Green.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Stardate81316-aolE.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Scenes/Game/PowerUps/singleball.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Game/PowerUps/longerBoard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Game/PowerUps/speedUp.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Game/PowerUps/speedDown.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Game/PowerUps/multiball.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Game/PowerUps/shorterBoard.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Assets/sounds/missed_sound_effect.wav" type="AudioStream" id=16]
+[ext_resource path="res://Assets/sounds/pong_sound_effect.wav" type="AudioStream" id=17]
+[ext_resource path="res://Assets/sounds/power_up_sound_effect.wav" type="AudioStream" id=18]
+[ext_resource path="res://Scripts/Game/PongVariant/PongVariant.gd" type="Script" id=19]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 16 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 4, 16 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 4, 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 10, 100 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10, 50 )
+
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 10, 100 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 10, 50 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 40, 10 )
+
+[sub_resource type="RectangleShape2D" id=12]
+extents = Vector2( 80, 10 )
+
+[sub_resource type="RectangleShape2D" id=13]
+extents = Vector2( 80, 10 )
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 40, 10 )
+
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 80, 10 )
+
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 80, 10 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 30
+font_data = ExtResource( 9 )
+
+[node name="game" type="Node2D"]
+script = ExtResource( 19 )
+
+[node name="leftPaddle" type="Area2D" parent="."]
+position = Vector2( 67.628, 188.919 )
+scale = Vector2( 1, 2 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="leftPaddle"]
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftPaddle"]
+shape = SubResource( 1 )
+
+[node name="rightPaddle" type="Area2D" parent="."]
+position = Vector2( 563.815, 188.919 )
+scale = Vector2( 1, 2 )
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="rightPaddle"]
+texture = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightPaddle"]
+shape = SubResource( 2 )
+
+[node name="ball" type="Area2D" parent="."]
+position = Vector2( 320.5, 191.124 )
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="ball"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball"]
+shape = SubResource( 3 )
+
+[node name="Trail" type="Particles2D" parent="ball"]
+amount = 10
+speed_scale = 2.0
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="leftWall" type="Area2D" parent="."]
+position = Vector2( -10, 200 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftWall"]
+shape = SubResource( 7 )
+
+[node name="leftWallMiss" type="Area2D" parent="."]
+position = Vector2( -10, 50 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="leftWallMiss"]
+position = Vector2( 4, 0 )
+scale = Vector2( 1, 5 )
+texture = ExtResource( 8 )
+
+[node name="Sprite2" type="Sprite" parent="leftWallMiss"]
+position = Vector2( 4, 300 )
+scale = Vector2( 1, 5 )
+texture = ExtResource( 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftWallMiss"]
+shape = SubResource( 8 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="leftWallMiss"]
+position = Vector2( 0, 300 )
+shape = SubResource( 8 )
+
+[node name="rightWall" type="Area2D" parent="."]
+position = Vector2( 650, 200 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightWall"]
+shape = SubResource( 9 )
+
+[node name="rightWallMiss" type="Area2D" parent="."]
+position = Vector2( 650, 50 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="rightWallMiss"]
+scale = Vector2( 1, 5 )
+texture = ExtResource( 8 )
+offset = Vector2( -4, 0 )
+
+[node name="Sprite2" type="Sprite" parent="rightWallMiss"]
+position = Vector2( 0, 300 )
+scale = Vector2( 1, 5 )
+texture = ExtResource( 8 )
+offset = Vector2( -4, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightWallMiss"]
+shape = SubResource( 10 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="rightWallMiss"]
+position = Vector2( 0, 300 )
+shape = SubResource( 10 )
+
+[node name="ceiling" type="Area2D" parent="."]
+position = Vector2( 40, -10 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="ceiling"]
+scale = Vector2( 4, 1 )
+texture = ExtResource( 8 )
+offset = Vector2( 0, 4 )
+
+[node name="Sprite2" type="Sprite" parent="ceiling"]
+position = Vector2( 560, 0 )
+scale = Vector2( 4, 1 )
+texture = ExtResource( 8 )
+offset = Vector2( 0, 4 )
+
+[node name="Sprite3" type="Sprite" parent="ceiling"]
+position = Vector2( 280, 0 )
+scale = Vector2( 8, 1 )
+texture = ExtResource( 8 )
+offset = Vector2( 0, 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ceiling"]
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ceiling"]
+position = Vector2( 240, 0 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ceiling"]
+position = Vector2( 320, 0 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="ceiling"]
+position = Vector2( 560, 0 )
+shape = SubResource( 11 )
+
+[node name="ceilingLeftHit" type="Area2D" parent="."]
+position = Vector2( 160, -10 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ceilingLeftHit"]
+shape = SubResource( 12 )
+
+[node name="ceilingRightHit" type="Area2D" parent="."]
+position = Vector2( 480, -10 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ceilingRightHit"]
+shape = SubResource( 13 )
+
+[node name="floor" type="Area2D" parent="."]
+position = Vector2( 40, 410 )
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="floor"]
+scale = Vector2( 4, 1 )
+texture = ExtResource( 8 )
+offset = Vector2( 0, -4 )
+
+[node name="Sprite2" type="Sprite" parent="floor"]
+position = Vector2( 560, 0 )
+scale = Vector2( 4, 1 )
+texture = ExtResource( 8 )
+offset = Vector2( 0, -4 )
+
+[node name="Sprite3" type="Sprite" parent="floor"]
+position = Vector2( 280, 0 )
+scale = Vector2( 8, 1 )
+texture = ExtResource( 8 )
+offset = Vector2( 0, -4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="floor"]
+position = Vector2( 240, 0 )
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="floor"]
+position = Vector2( 320, 0 )
+shape = SubResource( 14 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="floor"]
+position = Vector2( 560, 0 )
+shape = SubResource( 14 )
+
+[node name="floorLeftHit" type="Area2D" parent="."]
+position = Vector2( 160, 410 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floorLeftHit"]
+shape = SubResource( 15 )
+
+[node name="floorRightHit" type="Area2D" parent="."]
+position = Vector2( 480, 410 )
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floorRightHit"]
+shape = SubResource( 16 )
+
+[node name="seperator" type="Sprite" parent="."]
+position = Vector2( 320, 200 )
+texture = ExtResource( 3 )
+
+[node name="leftPlayer" type="Label" parent="."]
+margin_left = 5.0
+margin_right = 59.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 17 )
+text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="leftPlayer"]
+margin_left = 55.0
+margin_right = 65.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 17 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rightPlayer" type="Label" parent="."]
+margin_left = 565.0
+margin_right = 619.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 17 )
+text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Score" type="Label" parent="rightPlayer"]
+margin_left = 55.0
+margin_right = 65.0
+margin_bottom = 30.0
+custom_fonts/font = SubResource( 17 )
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="speedUp" parent="." instance=ExtResource( 12 )]
+position = Vector2( -15, -15 )
+
+[node name="speedDown" parent="." instance=ExtResource( 13 )]
+
+[node name="multiball" parent="." instance=ExtResource( 14 )]
+
+[node name="singleball" parent="." instance=ExtResource( 10 )]
+
+[node name="longerBoard" parent="." instance=ExtResource( 11 )]
+
+[node name="shorterBoard" parent="." instance=ExtResource( 15 )]
+
+[node name="pong_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 17 )
+
+[node name="missed_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="power_up_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+
+[node name="back_btn" type="Button" parent="."]
+margin_left = 300.0
+margin_top = 7.0
+margin_right = 340.0
+margin_bottom = 27.0
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="area_entered" from="leftPaddle" to="leftPaddle" method="_on_leftPaddle_area_entered"]
+[connection signal="area_entered" from="rightPaddle" to="rightPaddle" method="_on_rightPaddle_area_entered"]
+[connection signal="area_entered" from="leftWall" to="leftWall" method="_on_leftWall_area_entered"]
+[connection signal="area_entered" from="leftWallMiss" to="leftWallMiss" method="_on_leftWallMiss_area_entered"]
+[connection signal="area_entered" from="rightWall" to="rightWall" method="_on_rightWall_area_entered"]
+[connection signal="area_entered" from="rightWallMiss" to="rightWallMiss" method="_on_rightWallMiss_area_entered"]
+[connection signal="area_entered" from="ceiling" to="ceiling" method="_on_ceiling_area_entered"]
+[connection signal="area_entered" from="ceilingLeftHit" to="ceilingLeftHit" method="_on_ceilingLeftHit_area_entered"]
+[connection signal="area_entered" from="ceilingRightHit" to="ceilingRightHit" method="_on_ceilingRightHit_area_entered"]
+[connection signal="area_entered" from="floor" to="floor" method="_on_floor_area_entered"]
+[connection signal="area_entered" from="floorLeftHit" to="floorLeftHit" method="_on_floorLeftHit_area_entered"]
+[connection signal="area_entered" from="floorRightHit" to="floorRightHit" method="_on_floorRightHit_area_entered"]
+[connection signal="area_entered" from="speedDown" to="speedUp" method="_on_speedDown_area_entered"]
+[connection signal="area_entered" from="multiball" to="speedUp" method="_on_multiball_area_entered"]
+[connection signal="area_entered" from="singleball" to="speedUp" method="_on_singleball_area_entered"]
+[connection signal="area_entered" from="longerBoard" to="speedUp" method="_on_longerBoard_area_entered"]
+[connection signal="area_entered" from="shorterBoard" to="speedUp" method="_on_shorterBoard_area_entered"]

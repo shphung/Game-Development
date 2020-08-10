@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Menu/Credits.gd" type="Script" id=1]
+
+[node name="Credits" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_Name" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.1
+margin_bottom = 307.0
+text = "Credits:
+
+Names: Steven Phung, Louis Guan
+
+CS4700.01 - Game Development
+
+Music and Sound Effects: Permitted for non-commercial use under license \"Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+
+Music and Sound Effects by: Alexander. Links:
+http://www.orangefreesounds.com/ping-pong-ball-bounce-sound-effect/
+http://www.orangefreesounds.com/deep-error-tone-sound-effect/
+http://www.orangefreesounds.com/interface-beep-up-sound-effect/"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_back" type="Button" parent="."]
+margin_left = 20.0
+margin_top = 360.0
+margin_right = 170.0
+margin_bottom = 380.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}

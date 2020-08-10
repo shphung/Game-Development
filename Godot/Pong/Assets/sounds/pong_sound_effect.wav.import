@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pong_sound_effect.wav-4bb51de55fb8baed042b2299bfe585c6.sample"
+
+[deps]
+
+source_file="res://Assets/sounds/pong_sound_effect.wav"
+dest_files=[ "res://.import/pong_sound_effect.wav-4bb51de55fb8baed042b2299bfe585c6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

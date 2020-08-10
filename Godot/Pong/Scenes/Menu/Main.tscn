@@ -1,0 +1,82 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scripts/Menu/Main.gd" type="Script" id=1]
+
+[node name="Main" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="lbl_Name" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.1
+text = "Main Menu
+Names: Steven Phung, Louis Guan     CS4700 - Assignment 4"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_clone" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 100.0
+margin_right = 200.0
+margin_bottom = 120.0
+text = "Pong Clone"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_variant" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 200.0
+margin_right = 200.0
+margin_bottom = 220.0
+text = "Pong Variant"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_quit" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 300.0
+margin_right = 200.0
+margin_bottom = 320.0
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_music" type="Button" parent="."]
+margin_left = 445.0
+margin_top = 100.0
+margin_right = 595.0
+margin_bottom = 120.0
+text = "Music"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_credits" type="Button" parent="."]
+margin_left = 445.0
+margin_top = 300.0
+margin_right = 595.0
+margin_bottom = 320.0
+text = "Credits"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_instructions" type="Button" parent="."]
+margin_left = 445.0
+margin_top = 198.834
+margin_right = 595.0
+margin_bottom = 218.834
+text = "Variant Controls"
+__meta__ = {
+"_edit_use_anchors_": false
+}
